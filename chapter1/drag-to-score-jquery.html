@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <style>
+        body,html,ul,li{
+            margin:0;padding:0;
+            font:14px/18px 'Arial,Helvetica';
+        }
+        ul,li{
+            list-style: none;
+        }
+        #scoreSheet{
+            overflow:hidden;
+            text-align:center;
+            display: block;
+            margin:15px auto;
+            width:200px;
+        }
+        #scoreSheet li{
+            display: inline-block;
+            width:20px;
+            text-align:center;
+            float: left;
+        }
+        #toolBar{
+            width:200px;
+            margin:10px auto;
+            border:1px solid #ccc;
+            border-radius:30px;
+            height:10px;
+            position: relative;
+
+        }
+        #radio{
+            width:25px;
+            height:25px;
+            border-radius:25px;
+            background: #f00;
+            display: block;
+            position: absolute;
+            top:-7.5px;
+            left:0px;
+            color:#fff;
+            text-align:center;
+            line-height:25px;
+
+        }
+
+        #process{
+            width:0;
+            background: #f30;
+            position: absolute;
+            height:10px;
+            border-radius:25px;
+        }
+    </style>
+</head>
+<body>
+<div id="drag-range">
+    <ul id="scoreSheet">
+        <li>1</li>
+        <li>|</li>
+        <li>3</li>
+        <li>|</li>
+        <li>5</li>
+        <li>|</li>
+        <li>7</li>
+        <li>|</li>
+        <li>9</li>
+        <li>|</li>
+    </ul>
+    <div id="toolBar">
+        <div id="process"></div>
+        <a href="javascript:;" id="radio" data-init="8">1</a>
+    </div>
+</div>
+
+
+<script src="jquery.1.11.js"></script>
+<script>
+    $(function(){
+        var $radio = $('#radio');    //拖动的按钮
+        var $toolBar = $('#toolBar');  //打分的横条
+        var $process = $('#process');  //随着按钮增加宽度的进度条
+        var $uls = $('#scoreSheet');   // 分数集合
+        var everDistance = 200/10;     // 每拖动的距离分数+1
+        var modules = {
+            initX:0,                   // 手指第一次按下记录的X轴
+            status:false,              // 记录是否在按下的状态
+            movedX:0,                  //  手指按下后移动的距离
+            score:1                    // 默认分数从1开始
+        };
+
+        $radio.on('touchstart',function(e){
+            modules.initX = $toolBar.offset().left;         //手指按下的时候,获取距离屏幕左边的距离
+            modules.status = true;                          // 记录按下的状态,当松开的时候为false
+        });
+
+        $radio.on('touchmove',function(e){
+            modules.movedX = e.originalEvent.targetTouches[0].clientX;            //手指按紧移动的时候获取X轴的变化
+            var distance = modules.movedX - modules.initX;                       // 移动的距离 - 初始按下的X轴就是需要偏移的距离
+            if(distance<=0 || distance>=200)return false;                        // 如果移动到头或者超出最大长度将不执行
+            $radio.css({
+                'left':distance-7                                                //修复的原点中心位置
+            });
+
+            modules.score = parseInt(distance/everDistance)+1;                    //移动的距离 / 分数距离的间隔就是分数了
+            $radio.html(modules.score);
+            setColor(modules.score);
+            $process.width(distance);                                             // 改变进度条的宽度
+        });
+        function setColor(score){                                                 // 根据分数来改变颜色值
+            var _lis = $uls.find('li'),_len = _lis.length;
+            for(var i =0;i<_len;i++){
+                if(i<score){
+                    _lis.eq(i).css('color','#f00');
+                }else{
+                    _lis.eq(i).css('color','#000');
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
