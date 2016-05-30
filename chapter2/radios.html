@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align:center;
+        }
+        a#submit{
+            background: #A7264D;
+            color:#fff;
+            padding:6px 18px;
+            border-radius:4px;
+            display: inline-block;
+            text-decoration:none;
+            font-size:14px;
+            cursor: pointer;
+        }
+        label{
+            display: block;
+
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <h5>兴趣爱好</h5>
+    <div class="items">
+        <label for="">音乐<input type="checkbox" value="音乐"></label>
+        <label for="">美术<input type="checkbox" value="美术"></label>
+        <label for="">电子<input type="checkbox" value="电子"></label>
+        <label for="">体育<input type="checkbox" value="体育"></label>
+        <label for="">游戏<input type="checkbox" value="游戏"></label>
+    </div>
+
+    <p>
+        <a href="javascript:;" id="submit">提交</a>
+    </p>
+
+</form>
+<script src="../libs/jquery.1.11.js"></script>
+<script>
+    (function($){
+        var $items = $('div.items input[type=checkbox]');
+        var $subBtn = $('#submit');
+
+
+        function getItems(){
+            var _items = [];
+            $items.each(function(i,n){
+                var _self = $(n);
+                if(_self.is(':checked')){
+                    _items.push(_self.val());
+                }
+            })
+            return _items;
+        }
+
+        $subBtn.on('click',function(){
+            var _getItems = getItems();
+            alert('You chose:'+_getItems.join(','));
+        })
+    })(jQuery)
+</script>
+</body>
+</html>
