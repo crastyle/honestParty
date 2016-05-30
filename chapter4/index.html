@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style>
+
+        ul,li{
+            margin:0;
+            padding:0;
+        }
+        .banner-list .banner-wrap {
+            width:800px;
+            height:300px;
+            position: relative;
+            margin:30px auto;
+        }
+
+        .banner-list .banner-wrap:hover .ct-btn {
+            display: block
+        }
+
+        .banner-list .banner-wrap .ct-btn {
+            position: absolute;
+            transition: .5s all;
+            top: 50%;
+            display: none;
+            width: 30px;
+            height: 30px;
+            z-index: 5;
+            background-size:100% !important;
+        }
+
+        .banner-list .banner-wrap .ct-btn.banner-btn-next {
+            background: url(../images/btn-next.png) no-repeat;
+            right: 0
+        }
+
+        .banner-list .banner-wrap .ct-btn.banner-btn-prev {
+            background: url(../images/btn-prev.png) no-repeat;
+            left: 0
+        }
+
+        .banner-list .banner-wrap ul.banner {
+            overflow: hidden;
+            width:800px;
+            height:300px;
+        }
+
+        .banner-list .banner-wrap ul.banner li {
+            float: left;
+            position: relative;
+            list-style: none;
+        }
+
+        .banner-list .banner-wrap ul.banner li a {
+            display: block
+        }
+
+        .banner-list .banner-wrap ul.banner li .tip {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            left: 0;
+            bottom: 0;
+            z-index: 5;
+            text-indent: 20px;
+            background: #000;
+
+        }
+
+        .banner-list .banner-wrap ul.banner li .tip a {
+            color: #fff
+        }
+
+        .banner-list .banner-wrap ul.banner li img {
+            display: block;
+            width: 800px;
+            height: 300px
+        }
+
+        .banner-list .banner-wrap ul.banner-page {
+            position: absolute;
+            width: 100%;
+            text-align: right;
+            bottom: 20px;
+            left: 0;
+            z-index: 15
+        }
+
+        .banner-list .banner-wrap ul.banner-page li {
+            display: inline-block;
+            width: 22px;
+            height: 5px;
+            background: #ccc;
+            margin-right: 10px
+        }
+
+        .banner-list .banner-wrap ul.banner-page li.on {
+            background: #e32
+        }
+
+        .banner-list .top-list .top-bg {
+            display: block;
+            background: url(../images/top-background.png);
+            width: 93px;
+            height: 21px
+        }
+
+        .banner-list .top-list .topic-item .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 13px 0
+        }
+
+        .banner-list .top-list .topic-item .desc {
+            color: #999;
+            padding-bottom: 10px;
+            line-height: 20px;
+            height: 40px;
+            overflow: hidden;
+            border-bottom: 1px dashed #999
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner-list">
+    <div class="banner-wrap">
+        <a href="javascript:;" class="ct-btn banner-btn-prev"></a>
+        <a href="javascript:;" class="ct-btn banner-btn-next"></a>
+        <ul class="banner">
+            <li style="display: none;">
+                <a href="javascript:;">
+                    <img src="../images/banner_1.png">
+                </a>
+
+                <div class="tip">
+                    <a href="javascript:;">
+                        全新绝世林肯
+                    </a>
+                </div>
+            </li>
+            <li style="display: list-item; opacity: 0.941436;">
+                <a href="javascript:;">
+                    <img src="../images/banner_2.png">
+                </a>
+
+                <div class="tip">
+                    <a href="javascript:;">
+                        大闹天宫
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <ul class="banner-page">
+            <li class=""></li>
+            <li class="on"></li>
+        </ul>
+    </div>
+</div>
+
+<script src="../libs/jquery.1.11.js"></script>
+<script src="../libs/jquery.SuperSlide.2.1.1.source.js"></script>
+<script>
+
+    $(function(){
+        $(".banner-wrap").slide({
+            mainCell:"ul.banner",
+            autoPlay:true,
+            prevCell:'.banner-btn-prev',
+            nextCell:'.banner-btn-next',
+            interTime:3000,
+            titCell:'ul.banner-page li'
+        });
+
+
+
+    })
+</script>
+</body>
+</html>
