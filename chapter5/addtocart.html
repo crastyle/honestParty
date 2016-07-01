@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Title</title>
+    <style>
+        body,html,ul,li{
+            margin:0;padding:0;
+            font:14px/18px 'Arial,Helvetica';
+        }
+        ul,li{
+            list-style: none;
+        }
+        .header{
+            width:1000px;
+            margin:100px auto;
+            border:1px solid #f5f5f5;
+            position: relative;
+        }
+        ul{
+            overflow:hidden;
+
+            box-sizing: border-box;
+            padding:16px;
+        }
+        li{
+            float: left;
+            width:200px;
+            border:1px solid #ccc;
+            padding:10px;
+            margin-right:16px;
+            margin-bottom:16px;
+        }
+        li img {
+            width:200px;
+        }
+        div.flex{
+            display: flex;
+            flex:1;
+        }
+        div.col{
+            flex:1;
+            box-sizing:border-box;
+            padding:0 10px;
+        }
+        div.col a{
+            display: block;
+
+            color:#fff;
+            text-align:center;
+            border-radius:3px;
+            font-size:14px;
+            padding:8px 0;
+            text-decoration: none;
+        }
+        div.col a:first-child{
+            background: #2ea056;
+        }
+        div.col a.addToCart{
+            background: #cc0000;
+            opacity: 1;
+        }
+        a.addToCart{
+            display: block;
+            color:#fff;
+            text-align:center;
+            border-radius:3px;
+            font-size:14px;
+            padding:8px 0;
+            text-decoration: none;
+            background: #cc0000;
+            opacity:0;
+        }
+        a.cart{
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            text-align:center;
+            line-height:80px;
+            background: #ff4846;
+            display: block;
+            font-size:18px;
+            text-decoration: none;
+            color:#fff;
+            position: absolute;
+            right:-80px;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <ul>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="../images/demo.jpg" alt="">
+            <h3>午后闲暇,轻饮浊酒</h3>
+            <div class="flex">
+                <div class="col">
+                    <a href="javascript:;">购买</a>
+                </div>
+                <div class="col">
+                    <a href="javascript:;" class="addToCart">加入购物车</a>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+    <a href="javascript" class="cart">车</a>
+</div>
+<script src="../libs/jquery.1.11.js"></script>
+<script src="add.js"></script>
+<script>
+
+    $(function(){
+
+        $('a.addToCart').addToCart({
+            cart:$('a.cart'),  //购物车的目标
+            speed:1000,        // 过度速度
+            before:function(){   //先触发
+                console.log(1);
+            },
+            success:function(){  //完成后触发
+                console.log(2);
+            },
+            clone:$('<img src="../images/demo.jpg">')   // 切换过程中显示的元素,不填写的话默认为按钮
+        })
+    });
+
+</script>
+</body>
+</html>
