@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <ul class="list">
+        <li class="item">
+            这里就是一个标题而已
+            <div class="hide-button">
+                <a href="javascript:;" class="button button-red">删除</a>
+                <a href="javascript:;" class="button button-orange">收藏</a>
+            </div>
+        </li>
+        <li class="item">
+            这里就是一个标题而已
+            <div class="hide-button">
+                <a href="javascript:;" class="button button-red">删除</a>
+                <a href="javascript:;" class="button button-orange">收藏</a>
+            </div>
+        </li>
+        <li class="item">
+            这里就是一个标题而已
+            <div class="hide-button">
+                <a href="javascript:;" class="button button-red">删除</a>
+                <a href="javascript:;" class="button button-orange">收藏</a>
+            </div>
+        </li>
+    </ul>
+<script src="js/zepto.min.js"></script>
+<script src="js/slide.js"></script>
+<script>
+    (function () {
+        var $item = $('ul.list li.item')
+        $item.showMenu()
+        $('body').on('click','.button',function () {
+            alert(111)
+        })
+
+    })();
+
+</script>
+</body>
+</html>
