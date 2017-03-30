@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>monthSelect</title>
+
+
+    <style>
+        html,body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <canvas id="myCanvas"></canvas>
+    </div>
+
+
+    <script type="text/javascript" src="chart.js"></script>
+    <script>
+
+        var chartData = {
+            canvas: document.getElementById("myCanvas"),
+            width: 320,
+            height: 60,
+            columnVisible: 5,//必须为奇数
+            columnCount: 12,
+            chosenIndex: 4,
+            onselect: function (index) {
+                console.log(index);
+            },
+            dataFormat: function (index) {
+                return (index+1) + "个月";
+            }
+        }
+        mychart = new monthSelect(chartData);
+        mychart.render();
+
+
+    </script>
+</body>
+
+</html>
